@@ -15,12 +15,14 @@ A primeira parte do [código principal](https://github.com/eberlawrence/SVM-TCC/
 * **Extração de atributos**
 
 A segunda parte consiste na extração de atributos dos sinais EMG no domínio do tempo. Os atributos foram:
-	* Mean Absolute Value - MAV
-	* Root Mean Square - RMS
-	* ZC - Zero-Crossings
-	* Signal Variance - VAR
-	* Slope Sign Change - SSC
-	* Waveform Length - WL
+
+	* *Mean Absolute Value - MAV*
+	* *Root Mean Square - RMS*
+	* *ZC - Zero-Crossings*
+	* *Signal Variance - VAR*
+	* *Slope Sign Change - SSC*
+	* *Waveform Length - WL*
+
 * **Treinamento - Gerando um modelo**
 
 A terceira parte foi o treino do classificador para a geração de um modelo. O modelo foi criado utilizando a Técnica de *Support Vector Machine - SVM*.
@@ -33,11 +35,13 @@ Na quarta parte foram realizados testes do classificador.
 
 Por último é feita a redução de dimensionalidade dos atributos extraídos usando a técnica de *Principal Component Analysis - PCA*. A figura abaixo mostra um exemplo, conseguindo reduzir a dimensionalidade de um espaço de 24D para 3D com 87% da variabilidade dos dados.
 
-	![PCA reduction](https://github.com/eberlawrence/SVM-TCC/blob/master/DataSet/SVM-PCA.JPG)
+![PCA reduction](https://github.com/eberlawrence/SVM-TCC/blob/master/DataSet/SVM-PCA.jpg)
 
 
-Autor: Eber Lawrence Souza Gouveia
+**Autor**: Eber Lawrence Souza Gouveia
+
 [Website](https://eberlawrence.github.io/) - [Linkedin](https://www.linkedin.com/in/ebersoulz/)
+
 [Laboratório de Engenharia Biomédica - BioLab](http://www.biolab.eletrica.ufu.br/)
 
 
