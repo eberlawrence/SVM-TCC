@@ -35,7 +35,7 @@ Na quarta parte foram realizados testes do classificador.
 
 Por último é feita a redução de dimensionalidade dos atributos extraídos usando a técnica de *Principal Component Analysis - PCA*. A figura abaixo mostra um exemplo, conseguindo reduzir a dimensionalidade de um espaço de 24D para 3D com 87% da variabilidade dos dados.
 
-![PCA reduction](https://github.com/eberlawrence/SVM-TCC/blob/master/DataSet/SVM-PCA.jpg)
+![PCA reduction](https://github.com/eberlawrence/SVM-TCC/blob/master/DataSet/SVM-PCA.JPG)
 
 
 **Autor**: Eber Lawrence Souza Gouveia
