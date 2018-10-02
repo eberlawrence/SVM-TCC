@@ -9,7 +9,7 @@ Essa pasta contém as coletas de sinais EMG de 6 voluntários utilizando um brac
 ## O que o código faz?
 
 * **Processamento de dados**  
-A primeira parte do [código principal](https://github.com/eberlawrence/SVM-TCC/blob/master/TrabalhoFinal.py){:target="_blank"} realiza a leitura e em sequência o processamento dos dados disponibilizados na pasta [DataSet](https://github.com/eberlawrence/SVM-TCC/tree/master/DataSet).
+A primeira parte do [código principal](https://github.com/eberlawrence/SVM-TCC/blob/master/TrabalhoFinal.py) realiza a leitura e em sequência o processamento dos dados disponibilizados na pasta [DataSet](https://github.com/eberlawrence/SVM-TCC/tree/master/DataSet).
 
 * **Extração de atributos**  
 A segunda parte consiste na extração de atributos dos sinais EMG no domínio do tempo. Os atributos foram:
