@@ -10,7 +10,7 @@ class SinalVoluntario():
         L_df = []
         for i in range(2):
             for j in range(4):
-                dados = pd.read_table('DataSet\\'+self.nome+str(i+1)+str(j+1)+'-Final.txt', sep=';', header=None)
+                dados = pd.read_csv('/home/user/GitHub/SVM-TCC/DataSet/' + self.nome + str(i + 1) + str(j + 1) + '-Final.txt', sep=';', header=None)
                 df = pd.DataFrame()
                 df['CH1'], df['CH2'], df['CH3'], df['CH4'], df['Trigger'] = dados[0], dados[1], dados[2], dados[3], dados[4]
                 L_df.append(df)
@@ -35,7 +35,7 @@ class SinalVoluntario():
         for i in range(2):
             count = 0
             for j in range(4):
-                resposta = np.array(pd.read_table('DataSet\\'+self.nome+str(i+1)+str(j+1)+'-Resposta.txt', header=None))
+                resposta = np.array(pd.read_csv('/home/user/GitHub/SVM-TCC/DataSet/'+self.nome+str(i+1)+str(j+1)+'-Resposta.txt', header=None))
                 for v in resposta:
                     if v == 1:
                         listaresposta.append('Supinar')

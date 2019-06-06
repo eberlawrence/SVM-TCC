@@ -391,8 +391,9 @@ def NovaOrdem(CARAC, RESP):
 ''' CARREGANDO DADOS DO VOLUNTÁRIO '''
 ##########################################################################################################################################################################
 
-# CARREGA DADOS DO VOLUNTÁRIO - 8 COLETAS DE 360seg - EMG DOS 4 CANAIS 
-VOL = SinalVoluntario('Hallef') 
+# CARREGA DADOS DO VOLUNTÁRIO - 8 COLETAS DE 360seg - EMG DOS 4 CANAIS
+nome = "Edu"
+VOL = SinalVoluntario(nome) 
 VOL_Coleta = VOL.CarregaDados()
 VOL_Resp = VOL.CarregaRespostas() # CARREGA UMA LISTA COM AS RESPOSTAS DE CADA CONTRAÇÃO
 VOL_Resp1, VOL_Resp2 = VOL_Resp[:int(len(VOL_Resp)/2)], VOL_Resp[int(len(VOL_Resp)/2):].reset_index(drop=True)
@@ -452,9 +453,25 @@ mav_ssc_wl2 = NovaOrdem(MAV_SSC_WL2, VOL_Resp2)
 mav_ssc_wl_T = pd.concat([mav_ssc_wl1,mav_ssc_wl2], ignore_index=True)
 
 ############################################################################################################################################################################
-''' TREINAMENTO E TESTE '''
+''' SALVANDO O DATAFRAME DE AMOSTRAS E RESPECTIVAS RESPOSTAS '''
 ############################################################################################################################################################################
 
+expDataFrame = ConcatAtrib(TC1, RT1)
+print(expDataFrame)
+expDataFrame.to_csv('/home/user/GitHub/SVM-TCC/DataFrame_Exemplo-Resposta/'+nome+'.txt', sep=';', index=False)
+
+with open('/home/user/GitHub/SVM-TCC/DataFrame_Exemplo-Resposta/'+nome+'.txt','r') as csvfile:
+   data = csvfile.readlines()
+
+with open('/home/user/GitHub/SVM-TCC/DataFrame_Exemplo-Resposta/'+nome+'.txt','w') as rewrite:
+   for row in data:
+      if row.find(";"):
+         row = row.replace(';',' ; ')
+      rewrite.write(row)
+
+############################################################################################################################################################################
+''' TREINAMENTO E TESTE '''
+############################################################################################################################################################################
 
 Val1 = TreinaValidacaoCruzada(TDA_VOL_1, RT280)
 Val1.Parametros(mostraDivisao=False,group=False)
@@ -473,20 +490,20 @@ print(Val12.tabelaDeClassificacao)
 pca1.pca.explained_variance_ratio_.sum()
 pca1.pca.n_components_
 
-#####################################################################################################################################################################
+############################################################################################################################################################################
 ''' ADICIONANDO AS COMPONENTES PRINCIPAIS AS OUTRAS CARACTERÍSTICAS '''
-#####################################################################################################################################################################
+############################################################################################################################################################################
 
 pcaAtributos = ConcatAtrib(sinalPCA1.iloc[:,:1], MAV_SSC_WL2)
 
 Val13 = TreinaValidacaoCruzada(pcaAtributos, VOL_Resp2)
-Val13.Parametros(group=True)
+Val13.Parametros(group=False)
 print(Val13.matrizDeConfusao)
 print(Val13.tabelaDeClassificacao)
 
-#####################################################################################################################################################################
+############################################################################################################################################################################
 ''' PLOTAR DISPERÇÃO ENTRE ATRIBUTOS E FRONTEIRAS DE DECISÃO '''
-#####################################################################################################################################################################
+############################################################################################################################################################################
 
 sinalPCA1['Resposta'] = RT280
 sns.pairplot(sinalPCA1,hue='Resposta', aspect=1, size=1.7, palette=dict(Repousar = 'black', Pinçar = 'green', Supinar = 'royalblue', Pronar = 'red',Fechar = 'darkorange', Estender = 'darkmagenta', Flexionar = 'sienna'))
